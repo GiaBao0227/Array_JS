@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Tính Năng Mảng</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .toggle-icon {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body
+    class="d-flex justify-content-center align-items-center vh-100 bg-light"
+  >
+    <div class="container">
+      <h1 class="text-center mb-4">Quản Lý Tính Năng Mảng</h1>
+
+      <!-- Phần nhập dữ liệu -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Nhập Số</h5>
+        </div>
+        <div class="card-body">
+          <div class="input-group">
+            <input
+              type="number"
+              id="mainNumberInput"
+              class="form-control"
+              placeholder="Nhập số"
+            />
+            <button id="addMainNumber" class="btn btn-primary">Thêm Số</button>
+          </div>
+          <div id="mainArrayBox" class="mt-3 p-2 bg-light border rounded">
+            <strong>Các số hiện tại:</strong>
+            <span id="mainArrayText">Chưa có số nào</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Các tính năng -->
+      <div class="accordion" id="featuresAccordion">
+        <!-- Tổng số dương -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading1"
+          >
+            <h6 class="mb-0">1. Tổng số dương</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature1"
+              aria-expanded="false"
+              aria-controls="feature1"
+            ></i>
+          </div>
+          <div
+            id="feature1"
+            class="collapse"
+            aria-labelledby="heading1"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Tính Tổng</button>
+              <div id="feature1Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đếm Số Dương -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading2"
+          >
+            <h6 class="mb-0">2. Đếm Số Dương</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature2"
+              aria-expanded="false"
+              aria-controls="feature2"
+            ></i>
+          </div>
+          <div
+            id="feature2"
+            class="collapse"
+            aria-labelledby="heading2"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Đếm Số</button>
+              <div id="feature2Result" class="mt-3">
+                <strong>Kết quả:</strong>
+                <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tìm số nhỏ nhất -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading3"
+          >
+            <h6 class="mb-0">3. Tìm số nhỏ nhất</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature3"
+              aria-expanded="false"
+              aria-controls="feature3"
+            ></i>
+          </div>
+          <div
+            id="feature3"
+            class="collapse"
+            aria-labelledby="heading3"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Tìm Số Nhỏ Nhất</button>
+              <div id="feature3Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tìm số dương nhỏ nhất -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading4"
+          >
+            <h6 class="mb-0">4. Tìm số dương nhỏ nhất</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature4"
+              aria-expanded="false"
+              aria-controls="feature4"
+            ></i>
+          </div>
+          <div
+            id="feature4"
+            class="collapse"
+            aria-labelledby="heading4"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Tìm Số Dương Nhỏ Nhất</button>
+              <div id="feature4Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tìm số chẵn -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading5"
+          >
+            <h6 class="mb-0">5. Tìm số chẵn cuối cùng</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature5"
+              aria-expanded="false"
+              aria-controls="feature5"
+            ></i>
+          </div>
+          <div
+            id="feature5"
+            class="collapse"
+            aria-labelledby="heading5"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Tìm số chẵn</button>
+              <div id="feature5Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đổi chỗ -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading6"
+          >
+            <h6 class="mb-0">6. Đổi chỗ</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature6"
+              aria-expanded="false"
+              aria-controls="feature6"
+            ></i>
+          </div>
+          <div
+            id="feature6"
+            class="collapse"
+            aria-labelledby="heading6"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="swapIndex1" class="form-label"
+                  >Vị trí thứ nhất:</label
+                >
+                <input
+                  type="number"
+                  id="swapIndex1"
+                  class="form-control"
+                  placeholder="Nhập vị trí thứ nhất (bắt đầu từ 0)"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="swapIndex2" class="form-label"
+                  >Vị trí thứ hai:</label
+                >
+                <input
+                  type="number"
+                  id="swapIndex2"
+                  class="form-control"
+                  placeholder="Nhập vị trí thứ hai (bắt đầu từ 0)"
+                />
+              </div>
+              <button class="btn btn-success">Đổi chỗ</button>
+              <div id="feature6Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sắp xếp tăng dần -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading7"
+          >
+            <h6 class="mb-0">7. Sắp xếp tăng dần</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature7"
+              aria-expanded="false"
+              aria-controls="feature7"
+            ></i>
+          </div>
+          <div
+            id="feature7"
+            class="collapse"
+            aria-labelledby="heading7"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Sắp xếp tăng dần</button>
+              <div id="feature7Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tìm số nguyên tố đầu tiên -->
+        <div class="card mb-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            id="heading8"
+          >
+            <h6 class="mb-0">8. Tìm số nguyên tố đầu tiên</h6>
+            <i
+              class="fas fa-chevron-down toggle-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#feature8"
+              aria-expanded="false"
+              aria-controls="feature8"
+            ></i>
+          </div>
+          <div
+            id="feature8"
+            class="collapse"
+            aria-labelledby="heading8"
+            data-bs-parent="#featuresAccordion"
+          >
+            <div class="card-body">
+              <button class="btn btn-success">Tìm số nguyên tố</button>
+              <div id="feature8Result" class="mt-3">
+                <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đếm số nguyên -->
+        <div class="card mb-2">
+            <div class="card-header d-flex justify-content-between align-items-center" id="heading9">
+              <h6 class="mb-0">9. Đếm số nguyên</h6>
+              <i class="fas fa-chevron-down toggle-icon" data-bs-toggle="collapse" data-bs-target="#feature9" aria-expanded="false" aria-controls="feature9"></i>
+            </div>
+            <div id="feature9" class="collapse" aria-labelledby="heading9" data-bs-parent="#featuresAccordion">
+              <div class="card-body">
+                <!-- Nhập các số thực -->
+                <div class="input-group mb-3">
+                  <input type="number" id="realNumberInput1" class="form-control" placeholder="Nhập số thực 1" step="any">
+                  <button id="addRealNumberButton" class="btn btn-primary">Thêm Số</button>
+                </div>
+          
+                <!-- Hiển thị mảng các số thực -->
+                <div id="realNumbersBox" class="mt-3 p-2 bg-light border rounded">
+                  <strong>Các số thực hiện tại:</strong>
+                  <span id="realNumbersText">Chưa có số nào</span>
+                </div>
+          
+                <!-- Kết quả đếm số nguyên -->
+                <button id="countIntegersButton" class="btn btn-success mt-3">Đếm số nguyên</button>
+                <div id="feature9Result" class="mt-3">
+                  <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+                </div>
+              </div>
+            </div>
+          </div>            
+
+        <!-- So sánh số âm và số dương-->
+        <div class="card mb-2">
+            <div class="card-header d-flex justify-content-between align-items-center" id="heading10">
+              <h6 class="mb-0">10. So sánh số âm và số dương</h6>
+              <i class="fas fa-chevron-down toggle-icon" data-bs-toggle="collapse" data-bs-target="#feature10" aria-expanded="false" aria-controls="feature10"></i>
+            </div>
+            <div id="feature10" class="collapse" aria-labelledby="heading10" data-bs-parent="#featuresAccordion">
+              <div class="card-body">
+                <button id="compareButton" class="btn btn-success">So sánh</button>
+                <div id="feature10Result" class="mt-3">
+                  <strong>Kết quả:</strong> <span>Chưa có kết quả</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
